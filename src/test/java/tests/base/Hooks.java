@@ -11,6 +11,7 @@ public class Hooks {
     public void Setup(){
         getDriver();
         System.out.println("Before Test Worked!");
+
     }
 
     @AfterTest
