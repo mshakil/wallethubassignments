@@ -1,21 +1,21 @@
 package org.example;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import main.MainCalls;
+
 import org.testng.annotations.Test;
 
-public class MyDemoTestClass {
+import tests.base.Hooks;
+
+
+import static driver.DriverFactory.getDriver;
+
+
+public class MyDemoTestClass extends Hooks{
+
+
+
     @Test
     public void HelloWorld(){
-        System.setProperty("webdriver.chrome.driver","C:\\drivers\\chrome\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-
-        driver.get("https://facebook.com");
-
-        driver.close();
-        driver.quit();
-
-
-
+        MainCalls.getFb_po().navigateTo_URL("https://google.com");
     }
 }
