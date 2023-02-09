@@ -16,11 +16,11 @@ public class MyDemoTestClass extends Hooks{
 
 
     @Test
-    public void HelloWorld(){
-        MainCalls.getFb_po().navigateTo_URL(GlobalVars.FACEBOOK_BASEURL);
-        System.out.println(GlobalVars.FACEBOOK_USERNAME);
-        System.out.println(GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
-        System.out.println(GlobalVars.FACEBOOK_BASEURL);
-        System.out.println(GlobalVars.FACEBOOK_PASSWORD);
+    public void LoginToFb(){
+        //MainCalls.getFb_po().navigateTo_URL(GlobalVars.FACEBOOK_BASEURL);
+        //MainCalls.getFb_po().enterEmail(GlobalVars.FACEBOOK_USERNAME);
+        //MainCalls.getFb_po().enterPassword(GlobalVars.FACEBOOK_PASSWORD);
+
+        //MainCalls.getFb_po().clickLogin();
     }
 }

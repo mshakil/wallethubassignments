@@ -4,7 +4,7 @@
 
     <test name="Test" paraller="classes" data-provider-thread-count="3">
         <classes>
-            <class name="org.example.MyDemoTestClass"></class>
+            <class name="facebook.tests.Facebook_Task1"></class>
         </classes>
     </test>
 </suite>

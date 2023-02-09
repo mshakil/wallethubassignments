@@ -19,7 +19,7 @@ public class GlobalVars {
             FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties");
 
             properties.load(file);
-            returnVal = properties.getProperty(key).toLowerCase().trim();
+            returnVal = properties.getProperty(key).trim();
         }
         catch (IOException x){
             System.out.println(x);

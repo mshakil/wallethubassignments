@@ -27,6 +27,7 @@ public class DriverFactory {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/chromedriver.exe");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 // Wait for the whole page to load
+                chromeOptions.addArguments("--disable-notifications");
                 chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                 if(isHeadLess){
                     chromeOptions.addArguments("--headless");
