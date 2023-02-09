@@ -10,9 +10,7 @@ public class Hooks {
     @BeforeTest
     public void Setup(){
         getDriver();
-        getDriver().manage().window().maximize();
         System.out.println("Before Test Worked!");
-
     }
 
     @AfterTest
