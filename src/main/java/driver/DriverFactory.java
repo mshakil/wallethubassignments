@@ -6,41 +6,44 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class DriverFactory {
     private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
+
     public static WebDriver getDriver() {
         if (webDriver.get() == null) {
             webDriver.set(createDriver());
         }
         return webDriver.get();
     }
+
     private static WebDriver createDriver() {
         WebDriver driver = null;
         String browserType = getBrowserType();
         Boolean isHeadLess = launchBrowserAsHeadless();
         switch (browserType) {
-            case "chrome" : {
+            case "chrome": {
                 System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/chromedriver.exe");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 // Wait for the whole page to load
                 chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-                if(isHeadLess){
+                if (isHeadLess) {
                     chromeOptions.addArguments("--headless");
                 }
 
                 driver = new ChromeDriver(chromeOptions);
                 break;
             }
-            case "firefox" : {
+            case "firefox": {
                 System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/main/java/driver/drivers/geckodriver.exe");
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 // Wait for the whole page to load
                 firefoxOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-                if(isHeadLess){
+                if (isHeadLess) {
                     firefoxOptions.addArguments("--headless");
                 }
                 driver = new FirefoxDriver(firefoxOptions);
@@ -56,15 +59,14 @@ public class DriverFactory {
 
         String browserTypeRemote = System.getProperty("browserType");
         try {
-            if(browserTypeRemote == null || browserTypeRemote.isEmpty()){
+            if (browserTypeRemote == null || browserTypeRemote.isEmpty()) {
 
                 Properties properties = new Properties();
                 FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/properties/config.properties");
 
                 properties.load(file);
                 browserType = properties.getProperty("browser").toLowerCase().trim();
-            }
-            else{
+            } else {
                 browserType = browserTypeRemote;
                 return browserType;
             }
@@ -74,7 +76,8 @@ public class DriverFactory {
         }
         return browserType;
     }
-    private static Boolean launchBrowserAsHeadless(){
+
+    private static Boolean launchBrowserAsHeadless() {
         boolean isHeadLess = false;
         isHeadLess = Boolean.parseBoolean(System.getProperty("headless"));
         return isHeadLess;
