@@ -2,7 +2,14 @@ package pageObjects;
 
 import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.GlobalVars;
+import java.time.Duration;
+
+
 
 public class Base_PO {
     public Base_PO() {
@@ -15,4 +22,14 @@ public class Base_PO {
     public void navigateTo_URL(String url) {
         getDriver().get(url);
     }
+    public void sendKeys(WebElement element, String textToType) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);
+    }
+
+    public void waitForWebElementAndClick(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+    }
+
 }

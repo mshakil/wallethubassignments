@@ -2,6 +2,7 @@ package tests.base;
 
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import utils.GlobalVars;
 
 import static driver.DriverFactory.cleanUpDriver;
 import static driver.DriverFactory.getDriver;
@@ -11,6 +12,7 @@ public class Hooks {
     public void Setup(){
         getDriver();
         System.out.println("Before Test Worked!");
+
 
     }
     @AfterTest
