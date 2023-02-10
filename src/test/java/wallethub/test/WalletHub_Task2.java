@@ -2,6 +2,7 @@ package wallethub.test;
 
 import main.MainCalls;
 import org.testng.annotations.Test;
+import org.testng.reporters.jq.Main;
 import tests.base.Hooks;
 import utils.GlobalVars;
 
@@ -17,6 +18,7 @@ public class WalletHub_Task2 extends Hooks
         String profilename = GlobalVars.WALLET_HUB_PROFILE_NAME;
 
         Boolean isEditProfileVisible = true;
+        String ratingHeadingTitle = "What's Your Rating?";
         try{
             MainCalls.getWallethub_login_po().navigateTo_URL(webUrl);
             MainCalls.getWallethub_login_po().LoginToWalletHubAccount(username,password);
@@ -27,6 +29,9 @@ public class WalletHub_Task2 extends Hooks
             profilename = "Test Insurance Company";
             MainCalls.getWallethub_review_po().navigateTo_URL(profileUrl);
             MainCalls.getWallethub_login_po().VerifyIsProfileNameVisible(profilename);
+
+            MainCalls.getWallethub_review_po().ClickReviewSection();
+            MainCalls.getWallethub_review_po().VerifyReviewSectionIsVisible(ratingHeadingTitle);
         }
         catch (Exception ex){
             System.out.println(ex);
