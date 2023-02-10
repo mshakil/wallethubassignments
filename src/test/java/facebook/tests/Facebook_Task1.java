@@ -1,6 +1,7 @@
 package facebook.tests;
 
 import main.MainCalls;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import tests.base.Hooks;
 import utils.GlobalVars;
@@ -13,5 +14,6 @@ public class Facebook_Task1 extends Hooks {
         MainCalls.getFb_po().enterPassword(GlobalVars.FACEBOOK_PASSWORD);
 
         MainCalls.getFb_po().clickLogin();
+        
     }
 }

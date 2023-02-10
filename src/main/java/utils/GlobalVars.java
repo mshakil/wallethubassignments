@@ -33,4 +33,5 @@ public class GlobalVars {
     public static final String FACEBOOK_USERNAME = getConfigProperties("fb.username");
 
     public static final String FACEBOOK_PASSWORD = getConfigProperties("fb.password");
+
 }

@@ -6,9 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.GlobalVars;
-import java.time.Duration;
 
+import java.time.Duration;
 
 
 public class Base_PO {
@@ -32,4 +33,10 @@ public class Base_PO {
         wait.until(ExpectedConditions.elementToBeClickable(element)).click();
     }
 
+    public void waitForElement_And_ValidateText(WebElement element, String text) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        String actualText = wait.until(ExpectedConditions.visibilityOf(element)).getText();
+
+        Assert.assertEquals(actualText, text);
+    }
 }
