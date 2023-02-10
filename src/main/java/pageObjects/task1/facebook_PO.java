@@ -16,11 +16,14 @@ public class facebook_PO extends Base_PO {
     private @FindBy(xpath = ("//div[@aria-label='Create a post']//div[@role='button']"))
     WebElement status_Button;
 
-    private @FindBy(css = ("div[aria-label^='What's on your mind']"))
+    private @FindBy(css = ("div[aria-label*='on your mind']"))
     WebElement status_TextField;
 
     private @FindBy(css = ("div[aria-label='Post']"))
     WebElement status_PostButton;
+
+    private @FindBy(css = ("div[id^='jsc_']"))
+    WebElement check_Status;
 
     public facebook_PO() {
         super();
@@ -45,7 +48,7 @@ public class facebook_PO extends Base_PO {
         clickLogin();
 
     }
-    public void clickHomeButton()
+    private void clickHomeButton()
     {
         waitForWebElementAndClick(home_Button);
     }
@@ -55,18 +58,31 @@ public class facebook_PO extends Base_PO {
         waitForElement_And_Validate(home_Button);
 
     }
-    public void clickStatus()
+    private void clickStatus()
     {
         waitForWebElementAndClick(status_Button);
     }
 
-    public void enterStatus(String status)
+    private void enterStatus(String status)
     {
         sendKeys(status_TextField, status);
     }
-    public void clickPostButton()
+    private void clickPostButton()
     {
         waitForWebElementAndClick(status_PostButton);
+    }
+
+    public void postStatus(String status)
+    {
+        clickHomeButton();
+        clickStatus();
+        enterStatus(status);
+        clickPostButton();
+    }
+
+    public void checkStatus(String text)
+    {
+        waitForElement_And_ValidateText(check_Status,text);
     }
 
 }
