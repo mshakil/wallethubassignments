@@ -45,4 +45,11 @@ public class Base_PO {
         Assert.assertEquals(displayed,isDisplayed,"Element is not visible on DOM");
         System.out.println("Element Displayed Assertion Worked!");
     }
+
+    public void waitForElement_And_Validate(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        boolean isVisable = wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+
+        Assert.assertTrue(isVisable);
+    }
 }

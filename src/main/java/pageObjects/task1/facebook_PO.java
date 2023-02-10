@@ -11,35 +11,78 @@ public class facebook_PO extends Base_PO {
     WebElement password_TextField;
     private @FindBy(css = ("button[name='login']"))
     WebElement login_Button;
-
     private @FindBy(css = ("a[aria-label='Home']"))
     WebElement home_Button;
-
     private @FindBy(xpath = ("//div[@aria-label='Create a post']//div[@role='button']"))
     WebElement status_Button;
+
+    private @FindBy(css = ("div[aria-label*='on your mind']"))
+    WebElement status_TextField;
+
+    private @FindBy(css = ("div[aria-label='Post']"))
+    WebElement status_PostButton;
+
+    private @FindBy(css = ("div[id^='jsc_']"))
+    WebElement check_Status;
 
     public facebook_PO() {
         super();
     }
 
-    public void enterEmail(String email) {
+    private void enterEmail(String email) {
         sendKeys(userName_TextField, email);
     }
 
-    public void enterPassword(String password) {
+    private void enterPassword(String password) {
         sendKeys(password_TextField, password);
     }
 
-    public void clickLogin() {
+    private void clickLogin() {
         waitForWebElementAndClick(login_Button);
     }
-    public void clickHomeButton()
+
+    public void login(String email,String password)
+    {
+        enterEmail(email);
+        enterPassword(password);
+        clickLogin();
+
+    }
+    private void clickHomeButton()
     {
         waitForWebElementAndClick(home_Button);
     }
 
-    public void clickStatus()
+    public void CheckFaceBookPage()
+    {
+        waitForElement_And_Validate(home_Button);
+
+    }
+    private void clickStatus()
     {
         waitForWebElementAndClick(status_Button);
     }
+
+    private void enterStatus(String status)
+    {
+        sendKeys(status_TextField, status);
+    }
+    private void clickPostButton()
+    {
+        waitForWebElementAndClick(status_PostButton);
+    }
+
+    public void postStatus(String status)
+    {
+        clickHomeButton();
+        clickStatus();
+        enterStatus(status);
+        clickPostButton();
+    }
+
+    public void checkStatus(String text)
+    {
+        waitForElement_And_ValidateText(check_Status,text);
+    }
+
 }
