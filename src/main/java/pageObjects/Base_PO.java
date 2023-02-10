@@ -34,6 +34,15 @@ public class Base_PO {
         WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
         String actualText = wait.until(ExpectedConditions.visibilityOf(element)).getText();
 
-        Assert.assertEquals(actualText, text);
+        Assert.assertEquals(actualText, text, "Element Text is not Equals to Expected Text");
+        System.out.println("Element Validate Assertion Worked!");
+    }
+
+    public void waitForElement_And_Displayed(WebElement element, Boolean displayed){
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        Boolean isDisplayed = wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+
+        Assert.assertEquals(displayed,isDisplayed,"Element is not visible on DOM");
+        System.out.println("Element Displayed Assertion Worked!");
     }
 }

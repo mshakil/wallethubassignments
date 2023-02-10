@@ -31,4 +31,14 @@ public class GlobalVars {
 
     public static final String FACEBOOK_PASSWORD = getConfigProperties("fb.password");
 
+    public static final String WALLET_HUB_LOGIN_URL = getConfigProperties("wallet.hub.login");
+
+    public static final String WALLET_HUB_USER_NAME = getConfigProperties("wallet.hub.user.name");
+
+    public static final String WALLET_HUB_USER_PASSWORD = getConfigProperties("wallet.hub.user.password");
+
+    public static final String WALLET_HUB_PROFILE_NAME = getConfigProperties("wallet.hub.profile.name");
+
+    public static final String WALLET_HUB_PROFILE_URL = getConfigProperties("wallet.hub.profile.url");
+
 }
