@@ -36,4 +36,11 @@ public class Base_PO {
 
         Assert.assertEquals(actualText, text);
     }
+
+    public void waitForElement_And_Validate(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        boolean isVisable = wait.until(ExpectedConditions.visibilityOf(element)).isDisplayed();
+
+        Assert.assertTrue(isVisable);
+    }
 }
