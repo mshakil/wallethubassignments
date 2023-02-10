@@ -31,6 +31,8 @@ public class DriverFactory {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 // Wait for the whole page to load
                 chromeOptions.addArguments("--disable-notifications");
+                chromeOptions.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+
                 chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
                 if (isHeadLess) {
                     chromeOptions.addArguments("--headless");

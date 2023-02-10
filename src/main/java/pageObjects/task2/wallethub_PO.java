@@ -1,4 +1,7 @@
 package pageObjects.task2;
 
-public class wallethub_PO {
+import pageObjects.Base_PO;
+
+public class wallethub_PO extends Base_PO {
+
 }
