@@ -12,10 +12,6 @@ public class facebook_PO extends Base_PO {
     private @FindBy(css = ("button[name='login']"))
     WebElement login_Button;
 
-    public facebook_PO() {
-        super();
-    }
-
     public void enterEmail(String email) {
         sendKeys(userName_TextField, email);
     }

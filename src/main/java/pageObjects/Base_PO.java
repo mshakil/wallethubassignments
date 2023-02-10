@@ -9,9 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.GlobalVars;
 
-import java.time.Duration;
-
-
 public class Base_PO {
     public Base_PO() {
         //  CONSTRUCTOR Logic here
