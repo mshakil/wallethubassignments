@@ -14,6 +14,9 @@ public class Facebook_Task1 extends Hooks {
         MainCalls.getFb_po().enterPassword(GlobalVars.FACEBOOK_PASSWORD);
 
         MainCalls.getFb_po().clickLogin();
+
+        MainCalls.getFb_po().clickHomeButton();
+        MainCalls.getFb_po().clickStatus();
         
     }
 }

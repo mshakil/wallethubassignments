@@ -12,6 +12,12 @@ public class facebook_PO extends Base_PO {
     private @FindBy(css = ("button[name='login']"))
     WebElement login_Button;
 
+    private @FindBy(css = ("a[aria-label='Home']"))
+    WebElement home_Button;
+
+    private @FindBy(xpath = ("//div[@aria-label='Create a post']//div[@role='button']"))
+    WebElement status_Button;
+
     public facebook_PO() {
         super();
     }
@@ -26,5 +32,14 @@ public class facebook_PO extends Base_PO {
 
     public void clickLogin() {
         waitForWebElementAndClick(login_Button);
+    }
+    public void clickHomeButton()
+    {
+        waitForWebElementAndClick(home_Button);
+    }
+
+    public void clickStatus()
+    {
+        waitForWebElementAndClick(status_Button);
     }
 }
