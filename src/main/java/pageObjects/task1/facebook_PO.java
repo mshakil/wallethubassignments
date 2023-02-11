@@ -29,7 +29,7 @@ public class facebook_PO extends Base_PO {
     private @FindBy(css = ("div[data-pagelet='FeedUnit_0'] div[id^='jsc_c'] div.x1vvkbs"))  //div[data-pagelet^='FeedUnit_'] strong span
     WebElement check_Status;
 
-    private @FindBy(css=("div[data-pagelet^='FeedUnit_']")) List<WebElement> posts;
+    private @FindBy(css = ("div[data-pagelet^='FeedUnit_']")) List<WebElement> posts;
 
     public facebook_PO() {
         super();
@@ -47,68 +47,64 @@ public class facebook_PO extends Base_PO {
         waitForWebElementAndClick(login_Button);
     }
 
-    public void login(String email,String password)
-    {
+    public void login(String email, String password) {
         enterEmail(email);
         enterPassword(password);
         clickLogin();
 
     }
-    private void clickHomeButton()
-    {
+
+    private void clickHomeButton() {
         waitForWebElementAndClick(home_Button);
     }
 
-    public void CheckFaceBookPage()
-    {
+    public void CheckFaceBookPage() {
         waitForElement_And_Validate(home_Button);
 
     }
-    private void clickStatus()
-    {
+
+    private void clickStatus() {
         waitForWebElementAndClick(status_Button);
     }
 
-    private void enterStatus(String status)
-    {
+    private void enterStatus(String status) {
         sendKeys(status_TextField, status);
     }
+
     private void clickPostButton() throws InterruptedException {
         waitForWebElementAndClick(status_PostButton);
-        Thread.sleep(2000);
+        waitForElement_ToDisappear(status_PostButton);
+        //Thread.sleep(2000);
     }
 
-    public void postStatus(String status)
-    {
+    public void postStatus(String status) {
         clickHomeButton();
         clickStatus();
         enterStatus(status);
         try {
             clickPostButton();
+        } catch (Exception a) {
         }
-        catch (Exception a){}
     }
 
-    public void checkStatus(String text)
-    {
-        waitForElement_And_ValidateText(check_Status,text);
+    public void checkStatus(String text) {
+        waitForElement_And_ValidateText(check_Status, text);
     }
 
 
-
-    public void FindMyPost(String postText){
+    public void FindMyPost(String postText) {
         String postId = null;
-        for (WebElement element: posts) {
+        for (WebElement element : posts) {
 
-            String userName = element.findElement( By.tagName("strong")).findElement(By.tagName("span")).getText();
+            String userName = element.findElement(By.tagName("strong")).findElement(By.tagName("span")).getText();
             System.out.println(userName);
-            if(userName.equals("Alex Jason")){
+            if (userName.equals("Alex Jason")) {
                 postId = element.getAttribute("data-pagelet");
-                String customSelector = "div[data-pagelet='"+postId+"'] div[id^='jsc_c'] div.x1vvkbs";
+                String customSelector = "div[data-pagelet='" + postId + "'] div[id^='jsc_c'] div.x1vvkbs";
                 System.out.println(customSelector);
 
                 String text = getDriver().findElement(By.cssSelector(customSelector)).getText();
-                Assert.assertEquals(text,postText,"Status Not Posted");
+                Assert.assertEquals(text, postText, "Status Not Posted");
                 break;
             }
         }

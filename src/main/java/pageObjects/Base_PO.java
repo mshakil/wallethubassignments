@@ -75,4 +75,9 @@ public class Base_PO {
         Actions actions = new Actions(getDriver());
         actions.moveToElement(element).perform();
     }
+
+    public void waitForElement_ToDisappear(WebElement element){
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
 }

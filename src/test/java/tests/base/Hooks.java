@@ -10,14 +10,15 @@ import static driver.DriverFactory.getDriver;
 
 public class Hooks {
     @BeforeClass
-    public void Setup(){
+    public void Setup() {
         getDriver();
         System.out.println("Before Test Worked!");
 
     }
+
     @AfterClass
-    public void Teardown(){
-       // cleanUpDriver();
+    public void Teardown() {
+        cleanUpDriver();
         System.out.println("After Test Worked!");
     }
 }
