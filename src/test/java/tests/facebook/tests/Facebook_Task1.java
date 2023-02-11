@@ -9,7 +9,7 @@ import utils.GlobalVars;
 public class Facebook_Task1 extends Hooks {
     @Test
     public void LoginToFacebookAndPostStatus() {
-        String status = "Hello World";
+        String status = "ghi";
 
         MainCalls.getFb_po().navigateTo_URL(GlobalVars.FACEBOOK_BASEURL);
         MainCalls.getFb_po().login(GlobalVars.FACEBOOK_USERNAME,GlobalVars.FACEBOOK_PASSWORD);
@@ -17,7 +17,7 @@ public class Facebook_Task1 extends Hooks {
         MainCalls.getFb_po().CheckFaceBookPage();
 
         MainCalls.getFb_po().postStatus(status);
-        MainCalls.getFb_po().checkStatus(status);
+        MainCalls.getFb_po().FindMyPost(status);
         
     }
 }

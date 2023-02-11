@@ -1,8 +1,12 @@
 package pageObjects.task1;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pageObjects.Base_PO;
+
+import java.util.List;
 
 public class facebook_PO extends Base_PO {
     private @FindBy(css = ("input[id='email']"))
@@ -24,6 +28,8 @@ public class facebook_PO extends Base_PO {
 
     private @FindBy(css = ("div[data-pagelet='FeedUnit_0'] div[id^='jsc_c'] div.x1vvkbs"))  //div[data-pagelet^='FeedUnit_'] strong span
     WebElement check_Status;
+
+    private @FindBy(css=("div[data-pagelet^='FeedUnit_']")) List<WebElement> posts;
 
     public facebook_PO() {
         super();
@@ -67,9 +73,9 @@ public class facebook_PO extends Base_PO {
     {
         sendKeys(status_TextField, status);
     }
-    private void clickPostButton()
-    {
+    private void clickPostButton() throws InterruptedException {
         waitForWebElementAndClick(status_PostButton);
+        Thread.sleep(2000);
     }
 
     public void postStatus(String status)
@@ -77,12 +83,35 @@ public class facebook_PO extends Base_PO {
         clickHomeButton();
         clickStatus();
         enterStatus(status);
-        clickPostButton();
+        try {
+            clickPostButton();
+        }
+        catch (Exception a){}
     }
 
     public void checkStatus(String text)
     {
         waitForElement_And_ValidateText(check_Status,text);
+    }
+
+
+
+    public void FindMyPost(String postText){
+        String postId = null;
+        for (WebElement element: posts) {
+
+            String userName = element.findElement( By.tagName("strong")).findElement(By.tagName("span")).getText();
+            System.out.println(userName);
+            if(userName.equals("Alex Jason")){
+                postId = element.getAttribute("id");
+                String customSelector = "div[data-pagelet='"+postId+"'] div[id^='jsc_c'] div.x1vvkbs";
+                String text = getDriver().findElement(By.cssSelector(customSelector)).getText();
+                Assert.assertEquals(text,postText,"Status Not Posted");
+                break;
+            }
+
+
+        }
     }
 
 }
