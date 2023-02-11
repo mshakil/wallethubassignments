@@ -22,7 +22,7 @@ public class facebook_PO extends Base_PO {
     private @FindBy(css = ("div[aria-label='Post']"))
     WebElement status_PostButton;
 
-    private @FindBy(css = ("div[id^='jsc_']"))
+    private @FindBy(css = ("div[data-pagelet='FeedUnit_0'] div[id^='jsc_c'] div.x1vvkbs"))  //div[data-pagelet^='FeedUnit_'] strong span
     WebElement check_Status;
 
     public facebook_PO() {
