@@ -3,6 +3,7 @@ package pageObjects;
 import driver.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -44,5 +45,14 @@ public class Base_PO {
 
         Assert.assertEquals(displayed,isDisplayed,"Element is not visible on DOM");
         System.out.println("Element Displayed Assertion Worked!");
+    }
+
+    public void waitForElement_And_MouseOver(WebElement element){
+        WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
+        wait.until(ExpectedConditions.visibilityOf(element));
+
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(element).perform();
+
     }
 }

@@ -5,7 +5,7 @@
     <test name="Test" paraller="classes" data-provider-thread-count="3">
         <classes>
             <!--<class name="facebook.tests.Facebook_Task1"></class>-->
-            <class name="tests.base.wallethub.test.WalletHub_Task2"></class>
+            <class name="tests.wallethub.test.WalletHub_Task2"></class>
         </classes>
     </test>
 </suite>
