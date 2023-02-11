@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,6 +24,9 @@ public class Base_PO {
     protected By byHeading2Tag = new By.ByTagName("h2");
     protected By byHeading4Tag = new By.ByTagName("h4");
 
+    public String generateRandomString(int length) {
+        return RandomStringUtils.randomAlphabetic(length);
+    }
     public WebDriver getDriver() {
         return DriverFactory.getDriver();
     }

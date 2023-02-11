@@ -9,7 +9,7 @@ import utils.GlobalVars;
 public class Facebook_Task1 extends Hooks {
     @Test
     public void LoginToFacebookAndPostStatus() {
-        String status = "ghi";
+        String status = MainCalls.getFb_po().generateRandomString(10);
 
         MainCalls.getFb_po().navigateTo_URL(GlobalVars.FACEBOOK_BASEURL);
         MainCalls.getFb_po().login(GlobalVars.FACEBOOK_USERNAME,GlobalVars.FACEBOOK_PASSWORD);

@@ -103,14 +103,14 @@ public class facebook_PO extends Base_PO {
             String userName = element.findElement( By.tagName("strong")).findElement(By.tagName("span")).getText();
             System.out.println(userName);
             if(userName.equals("Alex Jason")){
-                postId = element.getAttribute("id");
+                postId = element.getAttribute("data-pagelet");
                 String customSelector = "div[data-pagelet='"+postId+"'] div[id^='jsc_c'] div.x1vvkbs";
+                System.out.println(customSelector);
+
                 String text = getDriver().findElement(By.cssSelector(customSelector)).getText();
                 Assert.assertEquals(text,postText,"Status Not Posted");
                 break;
             }
-
-
         }
     }
 
