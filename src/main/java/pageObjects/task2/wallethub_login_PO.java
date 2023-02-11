@@ -20,6 +20,9 @@ public class wallethub_login_PO extends wallethub_PO {
     private @FindBy(xpath = ("//div[@class='header-container']//button"))
     WebElement profile_Edit_Button;
 
+    private @FindBy(css = ("div.pr-content-left h2.pr-rec-title"))
+    WebElement user_recommendations;
+
     private void EnterUserName(String username) {
         sendKeys(userName_TextField, username);
     }
@@ -44,5 +47,9 @@ public class wallethub_login_PO extends wallethub_PO {
 
     public void VerifyIsEditProfileButtonVisible(Boolean isDisplayed) {
         waitForElement_And_Displayed(profile_Edit_Button, isDisplayed);
+    }
+
+    public void verifyUserRecommendation(String text){
+        waitForElement_And_ValidateText(user_recommendations,text);
     }
 }

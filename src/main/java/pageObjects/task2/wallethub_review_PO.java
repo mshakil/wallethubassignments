@@ -48,8 +48,8 @@ public class wallethub_review_PO extends wallethub_PO {
     private @FindBy(css = ("h2.pr-rec-title"))
     WebElement review_Profile;
 
-    private @FindBy(css = ("span.rvtab-ci-name"))
-    WebElement review_CheckReview;
+    private @FindBy(css = ("div.rvtab-ci-author span.rvtab-ci-nickname"))
+    List<WebElement> review_CheckReview;
 
     private @FindBy(css = ("div.rvc-continue-btn"))
     WebElement continue_Button;
@@ -147,12 +147,13 @@ public class wallethub_review_PO extends wallethub_PO {
 
     public void checkReviewInReviewList(String text)
     {
-        waitForElement_And_ValidateText(rating_ActualMessage,text);
-    }
-
-    public void verifyReviewInProfile(String text)
-    {
-        waitForElement_And_ValidateText(rating_ActualMessage,text);
+        for (WebElement element:
+             review_CheckReview) {
+            if(element.getText().equals(text)){
+                waitForElement_And_ValidateText(element,text);
+                System.out.println(element.getText());
+            }
+        }
     }
 }
 
