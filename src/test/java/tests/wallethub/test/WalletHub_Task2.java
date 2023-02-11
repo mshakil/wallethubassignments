@@ -1,4 +1,4 @@
-package wallethub.test;
+package tests.wallethub.test;
 
 import main.MainCalls;
 import org.testng.annotations.Test;
@@ -19,6 +19,7 @@ public class WalletHub_Task2 extends Hooks
 
         Boolean isEditProfileVisible = true;
         String ratingHeadingTitle = "What's Your Rating?";
+        String startToRate = "4 star rating";
         try{
             MainCalls.getWallethub_login_po().navigateTo_URL(webUrl);
             MainCalls.getWallethub_login_po().LoginToWalletHubAccount(username,password);
@@ -30,8 +31,11 @@ public class WalletHub_Task2 extends Hooks
             MainCalls.getWallethub_review_po().navigateTo_URL(profileUrl);
             MainCalls.getWallethub_login_po().VerifyIsProfileNameVisible(profilename);
 
-            MainCalls.getWallethub_review_po().ClickReviewSection();
-            MainCalls.getWallethub_review_po().VerifyReviewSectionIsVisible(ratingHeadingTitle);
+            MainCalls.getWallethub_review_po().clickReviewSection();
+            MainCalls.getWallethub_review_po().verifyReviewSectionIsVisible(ratingHeadingTitle);
+
+            MainCalls.getWallethub_review_po().verifyAllRatingStarsLightUpAndClickOnStart(startToRate);
+            MainCalls.getWallethub_review_po().verifyRatingProfileNameIsVisible(profilename);
         }
         catch (Exception ex){
             System.out.println(ex);
