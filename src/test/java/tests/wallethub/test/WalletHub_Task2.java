@@ -16,6 +16,7 @@ public class WalletHub_Task2 extends Hooks {
         String username = GlobalVars.WALLET_HUB_USER_NAME;
         String password = GlobalVars.WALLET_HUB_USER_PASSWORD;
         String profile_name = GlobalVars.WALLET_HUB_PROFILE_NAME;
+        String profile = GlobalVars.WALLET_HUB_PROFILE;
 
         Boolean isEditProfileVisible = true;
         String ratingHeadingTitle = "What's Your Rating?";
@@ -25,6 +26,9 @@ public class WalletHub_Task2 extends Hooks {
         String reviewMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
                 " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s," +
                 " when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+
+        String checkReviewName = "Your Review";
+        String profileRecommendation = GlobalVars.WALLET_HUB_PROFILE_NAME+"'s Recommendations";
         try
         {
             //  LOGIN TO WALLET HUB ACCOUNT
@@ -55,6 +59,13 @@ public class WalletHub_Task2 extends Hooks {
             //  VERIFY REVIEW IS SUBMITTED SUCCESSFULLY!
             MainCalls.getWallethub_review_po().verifyReviewSuccessMessage();
             MainCalls.getWallethub_review_po().verifyReviewMessageAfterSubmit(reviewMessage);
+
+            MainCalls.getWallethub_review_po().clickContinueButton();
+           // MainCalls.getWallethub_review_po().checkReviewInReviewList(checkReviewName);
+
+            MainCalls.getWallethub_review_po().navigateTo_URL(profile);
+
+            MainCalls.getWallethub_review_po().verifyReviewInProfile(profileRecommendation);
         } catch (Exception ex) {
             System.out.println(ex);
             Assert.fail("Some error occurred while executing scripts");

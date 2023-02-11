@@ -45,6 +45,15 @@ public class wallethub_review_PO extends wallethub_PO {
     private @FindBy(css = ("div.rvc-body-middle p"))
     WebElement rating_ActualMessage;
 
+    private @FindBy(css = ("h2.pr-rec-title"))
+    WebElement review_Profile;
+
+    private @FindBy(css = ("span.rvtab-ci-name"))
+    WebElement review_CheckReview;
+
+    private @FindBy(css = ("div.rvc-continue-btn"))
+    WebElement continue_Button;
+
     public void clickReviewSection() {
         for (WebElement element : navigation_Links) {
             String href = element.getAttribute("href");
@@ -129,6 +138,21 @@ public class wallethub_review_PO extends wallethub_PO {
     public void verifyReviewMessageAfterSubmit(String message)
     {
         waitForElement_And_ValidateText(rating_ActualMessage,message);
+    }
+
+    public void clickContinueButton()
+    {
+        waitForWebElementAndClick(continue_Button);
+    }
+
+    public void checkReviewInReviewList(String text)
+    {
+        waitForElement_And_ValidateText(rating_ActualMessage,text);
+    }
+
+    public void verifyReviewInProfile(String text)
+    {
+        waitForElement_And_ValidateText(rating_ActualMessage,text);
     }
 }
 

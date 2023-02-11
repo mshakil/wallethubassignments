@@ -18,7 +18,7 @@ public class Hooks {
 
     @AfterClass
     public void Teardown() {
-        cleanUpDriver();
+        //cleanUpDriver();
         System.out.println("After Test Worked!");
     }
 }

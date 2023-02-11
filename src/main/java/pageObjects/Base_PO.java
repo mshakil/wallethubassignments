@@ -35,6 +35,7 @@ public class Base_PO {
         getDriver().get(url);
     }
 
+
     public void sendKeys(WebElement element, String textToType) {
         WebDriverWait wait = new WebDriverWait(getDriver(), GlobalVars.WEBDRIVER_DEFAULT_EXPLICIT_TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(element)).sendKeys(textToType);

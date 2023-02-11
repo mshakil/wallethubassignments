@@ -41,4 +41,6 @@ public class GlobalVars {
 
     public static final String WALLET_HUB_PROFILE_URL = getConfigProperties("wallet.hub.profile.url");
 
+    public static final String WALLET_HUB_PROFILE = getConfigProperties("wallet.hub.profile");
+
 }
