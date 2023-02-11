@@ -42,6 +42,9 @@ public class wallethub_review_PO extends wallethub_PO {
     private @FindBy(css=("div.rvc-header"))
     WebElement rating_Success_Message;
 
+    private @FindBy(css = ("div.rvc-body-middle p"))
+    WebElement rating_ActualMessage;
+
     public void clickReviewSection() {
         for (WebElement element : navigation_Links) {
             String href = element.getAttribute("href");
@@ -121,6 +124,11 @@ public class wallethub_review_PO extends wallethub_PO {
 
         String headingMessage = rating_Success_Message.findElement(byHeading2Tag).getText()+rating_Success_Message.findElement(byHeading4Tag).getText();
         Assert.assertEquals(headingMessage,"Awesome!Your review has been posted.");
+    }
+
+    public void verifyReviewMessageAfterSubmit(String message)
+    {
+        waitForElement_And_ValidateText(rating_ActualMessage,message);
     }
 }
 

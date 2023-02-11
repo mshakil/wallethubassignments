@@ -74,7 +74,7 @@ public class facebook_PO extends Base_PO {
     private void clickPostButton() throws InterruptedException {
         waitForWebElementAndClick(status_PostButton);
         waitForElement_ToDisappear(status_PostButton);
-        //Thread.sleep(2000);
+
     }
 
     public void postStatus(String status) {

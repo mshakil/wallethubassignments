@@ -54,6 +54,7 @@ public class WalletHub_Task2 extends Hooks {
 
             //  VERIFY REVIEW IS SUBMITTED SUCCESSFULLY!
             MainCalls.getWallethub_review_po().verifyReviewSuccessMessage();
+            MainCalls.getWallethub_review_po().verifyReviewMessageAfterSubmit(reviewMessage);
         } catch (Exception ex) {
             System.out.println(ex);
             Assert.fail("Some error occurred while executing scripts");
