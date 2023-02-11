@@ -1,4 +1,4 @@
-package facebook.tests;
+package tests.base.facebook.tests;
 
 import main.MainCalls;
 import org.testng.Assert;

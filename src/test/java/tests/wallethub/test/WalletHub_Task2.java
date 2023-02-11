@@ -1,4 +1,4 @@
-package wallethub.test;
+package tests.base.wallethub.test;
 
 import main.MainCalls;
 import org.testng.annotations.Test;
@@ -30,8 +30,8 @@ public class WalletHub_Task2 extends Hooks
             MainCalls.getWallethub_review_po().navigateTo_URL(profileUrl);
             MainCalls.getWallethub_login_po().VerifyIsProfileNameVisible(profilename);
 
-            MainCalls.getWallethub_review_po().ClickReviewSection();
-            MainCalls.getWallethub_review_po().VerifyReviewSectionIsVisible(ratingHeadingTitle);
+            MainCalls.getWallethub_review_po().clickReviewSection();
+            MainCalls.getWallethub_review_po().verifyReviewSectionIsVisible(ratingHeadingTitle);
         }
         catch (Exception ex){
             System.out.println(ex);
