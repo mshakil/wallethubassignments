@@ -3,7 +3,6 @@ package tests.wallethub.test;
 import main.MainCalls;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.reporters.jq.Main;
 import tests.base.Hooks;
 import utils.GlobalVars;
 

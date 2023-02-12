@@ -49,7 +49,7 @@ public class wallethub_login_PO extends wallethub_PO {
         waitForElement_And_Displayed(profile_Edit_Button, isDisplayed);
     }
 
-    public void verifyUserRecommendation(String text){
-        waitForElement_And_ValidateText(user_recommendations,text);
+    public void verifyUserRecommendation(String text) {
+        waitForElement_And_ValidateText(user_recommendations, text);
     }
 }

@@ -1,15 +1,11 @@
 package pageObjects.task2;
 
-import net.bytebuddy.matcher.FilterableList;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
+
 
 public class wallethub_review_PO extends wallethub_PO {
     private @FindBy(css = ("div.left-content a"))
@@ -36,10 +32,10 @@ public class wallethub_review_PO extends wallethub_PO {
     private @FindBy(css = ("div.flex-box-rv textarea"))
     WebElement review_TextArea;
 
-    private @FindBy(css=("div[class='sub-nav-ct'] div[role='button'][class*='sbn-action']"))
+    private @FindBy(css = ("div[class='sub-nav-ct'] div[role='button'][class*='sbn-action']"))
     WebElement submit_Review_Button;
 
-    private @FindBy(css=("div.rvc-header"))
+    private @FindBy(css = ("div.rvc-header"))
     WebElement rating_Success_Message;
 
     private @FindBy(css = ("div.rvc-body-middle p"))
@@ -100,57 +96,53 @@ public class wallethub_review_PO extends wallethub_PO {
         System.out.println(actualCount + " Stars are showing in Review Dialog window");
     }
 
-    private void selectInsuranceType(String insuranceType){
+    private void selectInsuranceType(String insuranceType) {
         waitForWebElementAndClick(insurance_Dropdown);
 
-         List<WebElement> insuranceList = insurance_Dropdown.findElement(byUlTag).findElements(byLiTag);
-        for (WebElement element: insuranceList) {
-            if(element.getText().equals(insuranceType)){
+        List<WebElement> insuranceList = insurance_Dropdown.findElement(byUlTag).findElements(byLiTag);
+        for (WebElement element : insuranceList) {
+            if (element.getText().equals(insuranceType)) {
                 waitForWebElementAndClick(element);
                 break;
             }
         }
-        System.out.println(insuranceType+" Selected from dropdown");
+        System.out.println(insuranceType + " Selected from dropdown");
     }
 
-    private void writeReview(String reviewMessage){
-        sendKeys(review_TextArea,reviewMessage);
+    private void writeReview(String reviewMessage) {
+        sendKeys(review_TextArea, reviewMessage);
     }
 
-    private void clickSubmitReview()
-    {
+    private void clickSubmitReview() {
         waitForWebElementAndClick(submit_Review_Button);
     }
 
-    public void submitReview(String insuranceType, String reviewMessage){
+    public void submitReview(String insuranceType, String reviewMessage) {
         selectInsuranceType(insuranceType);
         writeReview(reviewMessage);
         clickSubmitReview();
     }
 
-    public void verifyReviewSuccessMessage(){
-        waitForElement_And_Displayed(rating_Success_Message,true);
+    public void verifyReviewSuccessMessage() {
+        waitForElement_And_Displayed(rating_Success_Message, true);
 
-        String headingMessage = rating_Success_Message.findElement(byHeading2Tag).getText()+rating_Success_Message.findElement(byHeading4Tag).getText();
-        Assert.assertEquals(headingMessage,"Awesome!Your review has been posted.");
+        String headingMessage = rating_Success_Message.findElement(byHeading2Tag).getText() + rating_Success_Message.findElement(byHeading4Tag).getText();
+        Assert.assertEquals(headingMessage, "Awesome!Your review has been posted.");
     }
 
-    public void verifyReviewMessageAfterSubmit(String message)
-    {
-        waitForElement_And_ValidateText(rating_ActualMessage,message);
+    public void verifyReviewMessageAfterSubmit(String message) {
+        waitForElement_And_ValidateText(rating_ActualMessage, message);
     }
 
-    public void clickContinueButton()
-    {
+    public void clickContinueButton() {
         waitForWebElementAndClick(continue_Button);
     }
 
-    public void checkReviewInReviewList(String text)
-    {
-        for (WebElement element:
-             review_CheckReview) {
-            if(element.getText().equals(text)){
-                waitForElement_And_ValidateText(element,text);
+    public void checkReviewInReviewList(String text) {
+        for (WebElement element :
+                review_CheckReview) {
+            if (element.getText().equals(text)) {
+                waitForElement_And_ValidateText(element, text);
                 System.out.println(element.getText());
             }
         }
